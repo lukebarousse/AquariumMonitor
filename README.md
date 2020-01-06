@@ -65,7 +65,7 @@ Create bash script for turning light on(off) & feeding as follows:
 ``` 
 $ nano /data/etc/light_on_1
 ```
-**Simple GPIO Example**   
+_Simple GPIO Example_   
 Add the following and input the correct GPIO number:
 ``` 
 #!/bin/bash
@@ -81,7 +81,7 @@ python3 /path/to/the/LightOn.py
 ```
 To turn off light create file `/data/etc/light_off_1` and change `echo 1 > ...` to `echo 0 > ...`.
 
-**HTML Request Example**  
+_HTML Request Example_  
 Add the following:
 ``` 
 #!/bin/bash
@@ -159,23 +159,21 @@ Overview: Aquarium light plugged into IoT relay connected to GPIO pins of Pi.
 Wire Pi to IOT Relay by M-F connection of GPIO 21 to positive input and GPIO ground to negative input of relay.  
 Turn aquarium light on and plug aquarium receptacle in the 'normally OFF' receptacle.
 
-#### Feeder Connections - GPIO 17
+#### Feeder Connections - GPIO 17  
 Overview: Feeder wired to one channel of relay connected to GPIO pins of Pi.
 Connect GPIO pins (Pi to Relay) 5V to Vcc, Ground to Gnd, and GPIO 17 to Channel Input.  
-Solder two electrical wires to one the feeders push botton as follows:
-![Fish Feeder Wiring](http://i1325.photobucket.com/albums/u626/jelazar67/WAMAS%20Articles/DIY%20Autofeeder/d51c2f28-e5c0-4d6f-b500-ad14b4b76b83_zps1a32b0d5.jpg)
+Solder two electrical wires to one the feeders push botton as follows:  
+![Fish Feeder Wiring](http://i1325.photobucket.com/albums/u626/jelazar67/WAMAS%20Articles/DIY%20Autofeeder/d51c2f28-e5c0-4d6f-b500-ad14b4b76b83_zps1a32b0d5.jpg)  
 Connect the other two ends of the wires to the N.O. and Com. terminals.
 ------
 
-### Alexa Control
+### Alexa or Google Control (Future)
 
-
+------
 
 ### Temperature Setup (Future)
 
 Source: [DIY Aquarium Controller] (https://www.youtube.com/watch?v=76CD_waImoA&list=PLJDyE_1I8YfPQP4L8Mso2kDRItCbfq94s&index=5)
-
-
 
 ------
 ### Sources/Inspiration
