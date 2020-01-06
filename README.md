@@ -162,16 +162,26 @@ Turn aquarium light on and plug aquarium receptacle in the 'normally OFF' recept
 #### Feeder Connections - GPIO 17  
 Overview: Feeder wired to one channel of relay connected to GPIO pins of Pi.
 Connect GPIO pins (Pi to Relay) 5V to Vcc, Ground to Gnd, and GPIO 17 to Channel Input.  
-Solder two electrical wires to one the feeders push botton as follows:  
+Solder two electrical wires to one the feeders push botton as pictured below.
+Connect the other two ends of the wires to the N.O. and Com. terminals.  
+
 ![Fish Feeder Wiring](http://i1325.photobucket.com/albums/u626/jelazar67/WAMAS%20Articles/DIY%20Autofeeder/d51c2f28-e5c0-4d6f-b500-ad14b4b76b83_zps1a32b0d5.jpg)  
-Connect the other two ends of the wires to the N.O. and Com. terminals.
-------
 
-### Alexa or Google Control (Future)
+
 
 ------
 
-### Temperature Setup (Future)
+### Alexa Control
+
+Note: Set this up only after all the steps above are fully complete
+Log into [_If This Than That_ (IFTTT.com)](https://ifttt.com/) and register your Amazon account.  
+For each item (Lights ON, Feed Fish, etc.) assign an Alexa trigger as follows:
+The "This" will be an 'Alexa' command (e.g., Alexa trigger aquarium lights on)
+The "That" will be 'Webhooks', for this get the url of the buttons on the MotionEyeOS page (Meaning, go to the webpage of the browers and copy the link location of the buttons for the respective task)
+
+------
+
+### Temperature Setup (To Be Continued for this)
 
 Source: [DIY Aquarium Controller] (https://www.youtube.com/watch?v=76CD_waImoA&list=PLJDyE_1I8YfPQP4L8Mso2kDRItCbfq94s&index=5)
 
