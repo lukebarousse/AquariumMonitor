@@ -1,0 +1,6 @@
+#!/bin/bash
+
+GPIO=18
+test -e /sys/class/gpio/gpio$GPIO || echo $GPIO > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio$GPIO/direction
+echo 0 > /sys/class/gpio/gpio$GPIO/value

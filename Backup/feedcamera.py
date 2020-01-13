@@ -49,7 +49,7 @@ try:
             print("FEED Pressed")
             GPIO.output(FEED_BTN_LED_OUTPUT, GPIO.HIGH)
             time.sleep(0.1)
-            command = 'python /var/www/html/pet-feeder/feed.py'
+            command = 'python /var/www/html/pet-preset1_1/feed.py'
             p = os.system(command)
         else:
             print("FEED Off")

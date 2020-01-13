@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GPIO=17
+test -e /sys/class/gpio/gpio$GPIO || echo $GPIO > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio$GPIO/direction
+echo 0 > /sys/class/gpio/gpio$GPIO/value
+
+sleep 1
+
+test -e /sys/class/gpio/gpio$GPIO || echo $GPIO > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio$GPIO/direction
+echo 1 > /sys/class/gpio/gpio$GPIO/value

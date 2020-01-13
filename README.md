@@ -9,6 +9,15 @@ Support Alexa control of:
 - Aquarium Light
 - Aquarium Feeder
 ------
+## Sources/Inspiration
+- [SourceForge GPIO Python Code Basics](https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/)
+- [GitHub for MotionEyeOS](https://github.com/ccrisan/motioneyeos)
+- [GitHub for LightOn/LightOff py file](https://github.com/skiwithpete/relaypi)
+- [Spy your pet with a Raspberry Pi Camera Server by Michel Parreno](https://hackernoon.com/spy-your-pet-with-a-raspberry-pi-camera-server-e71bb74f79ea "Medium Article")
+- [Duck DNS for Raspberry Pi](https://www.duckdns.org/install.jsp)
+- [Fish Feeder Arduino Raspberry Pi Link](https://www.instructables.com/id/Fish-Feeder-Arduino-Raspberry-Pi-Link/)
+- [Automatic Feeder for Aquacontroller](https://wamas.org/forums/blogs/entry/46-diy-automatic-feeder-for-aquacontroller/)  
+------
 ## Needed Equipment
 - Aquarium with installed light
 - [Raspberry Pi Starter Kit 4GB RAM](https://www.amazon.com/gp/product/B07V5JTMV9/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1)
@@ -46,48 +55,49 @@ Download the latest release of motioneyeos
 Extract the image file from the archive  
 Download writeimage.sh shell script (from motionEyeOS) that installs and configures your wifi and IP address
 ``` 
-wget https://raw.githubusercontent.com/ccrisan/motioneyeos/master/writeimage.sh
+$ wget https://raw.githubusercontent.com/ccrisan/motioneyeos/master/writeimage.sh
 
 # for Mac if you don't have wget (wget: command not found) install it
-brew install wget
+$ brew install wget
 ```
 Insert Smart Card into mac, determine disk number
 ```
 $ diskutil list
 ```
-Determine disk number from command above (i.e. /dev/diskN) and unmount
+Unmount prior to flashing (rdisk vice disk allows faster flashing)
 ```
-$ diskutil unmountDisk /dev/diskX
+$ diskutil unmountDisk /dev/rdiskX
 ```
-Write the image file to your SD card.
+Flash the image file to your SD card.
 ```
  sudo sh ./writeimage.sh -d /dev/XXXX -i "/path/to/motioneyeos.img"
 
 # IF starting up via WiFi you must add your network information to successfully start up
- sudo sh ./writeimage.sh -d /dev/disk3 -i "/Users/LukeBarousse/Downloads/motioneyeos-raspberrypi4-20190911.img" -n 'ATT8qCa7Vm:9vgf3=cu+rtr' -s "192.168.1.99/24:192.168.1.1:8.8.8.8"
+# Insert disk number, Network (Wifi) Key and password, and pi fixed IP address (you can designate at this time)
+ sudo sh ./writeimage.sh -d /dev/diskX -i "/Users/LukeBarousse/Downloads/motioneyeos-raspberrypi4-20190911.img" -n 'NetworkKey:PasswordForWifi' -s "192.168.1.xx/24:192.168.1.1:8.8.8.8"
 ```
 When done, eject the disk
 ```
 $ sudo diskutil eject /dev/rdiskN
 ```
-View video on [http://localhost:8081](http://http://192.168.1.99/24:8081 "Local Home")  
-Change admin password to something more secure  
+View video on [http://192.168.1.XXX](http://localhost/ "Local Home")  
+After login, change admin password to something more secure  
 Enable _Fast Network Camera_ option (NOTE: This disables motion detection/notification, pictures/movies, overlaid text.)  
-Ensure the Default Gateway (192.168.1.1) is set to your Router's IP (192.168.1.xxx) address or your date/time will be wrong (i.e. 1-1-1970).
+Ensure the 'Default Gateway' details (default is 192.168.1.1), is set to your Router's IP (e.g., 192.168.1.254) address or your date/time will be wrong (i.e. 1-1-1970).
 
-To shell into your pi from local computer
+Shell into your pi from local computer
 ``` 
-ssh admin@192.168.1.99
+ssh admin@192.168.1.XXX
 # type in password set above, if no password then leave blank and press enter
 ```
 #### Enable Light & Feeder Action Button
 
 Create bash script for turning light on(off) & feeding as follows:  
-(Note: only certain action button names are permitted, also use 1 for camera 1 & 2 for camera 2, etc.)
+(Note: only certain action button names are permitted, also number at end of file name corresponds to camera (i.e., 1 for camera 1 etc.))
 ``` 
 $ nano /data/etc/light_on_1
 ```
-_Simple GPIO Example_   
+_For a Simple GPIO Example_   
 Add the following and input the correct GPIO number:
 ``` 
 #!/bin/bash
@@ -103,7 +113,7 @@ python3 /path/to/the/LightOn.py
 ```
 To turn off light create file `/data/etc/light_off_1` and change `echo 1 > ...` to `echo 0 > ...`.
 
-_HTML Request Example_  
+_For a HTML Request Example_  
 Add the following:
 ``` 
 #!/bin/bash
@@ -113,12 +123,10 @@ METHOD="POST"
 TIMEOUT="5"
 curl -X $METHOD --connect-timeout $TIMEOUT "$URL" > /dev/null
 ```
-
-Make the script executable
+Finally, make the script executable
 ``` 
 $ chomod +x /data/etc/light_on_1
 ```
-
 ------
 ### Dynamic DNS & Port Forwarding
 Source: [Duck DNS for Raspberry Pi](https://www.duckdns.org/install.jsp)
@@ -126,7 +134,7 @@ Source: [Duck DNS for Raspberry Pi](https://www.duckdns.org/install.jsp)
 #### Setup Duck DNS Domain
 Visit [Duck DNS](https://www.duckdns.org/install.jsp) and sign in  
 Create a domain name  
-WARNING: You must type the full address [http://domainname.duckdns.org](http://domainname.duckdns.org)  
+WARNING: When entering name into browser you must enter the full address [http://domainname.duckdns.org](http://domainname.duckdns.org)  
 Add your local IPv4 and IPv6 address
 
 #### Setup Duck DNS to Update IP address
@@ -165,7 +173,7 @@ Verify if attempt was successful (OK is good, KO is bad)
 $ sudo cat duck.log
 ```
 #### Setup Port Forwarding
-Source:[ Port Forward](https://portforward.com/ "Port Forward"), [Test Port Forward](https://www.yougetsignal.com/tools/open-ports/), 
+Source: [Port Forward](https://portforward.com/ "Port Forward"), [Test Port Forward](https://www.yougetsignal.com/tools/open-ports/), 
 [AT&T Uverse Router](https://www.att.com/support/article/u-verse-high-speed-internet/KM1123072), [AT&T Uverse How to Port Forward](https://www.youtube.com/watch?v=Aim81HD9_vk)
 
 Note: Port forwarding is a way of making the pi accessible to computers on the internet
@@ -176,31 +184,33 @@ Create the port forward entries in your router
 - Internal Port: 8081
 - External Port: 8081
 - IP Address/Device: (Enter static IP address of Pi)
-Test your ports are forwarded correctly, may have to restart router.
+[Test your ports](https://www.yougetsignal.com/tools/open-ports/) are forwarded correctly, may have to restart router.
 ------
 ### GPIO Connections 
 
 Sources:  
 [Raspberry Pi GPIO Documentation](https://www.raspberrypi.org/documentation/usage/gpio/)  
 [MotionEyeOS Action Buttons](https://github.com/ccrisan/motioneyeos/wiki/Action-Buttons)  
-![RPi GPIO Layout](https://www.raspberrypi.org/documentation/usage/gpio/images/GPIO.png)
-Note: GPIO 2 & 3 available if I2C disabled, GPIO 14 & 15 available if serial is disabled
+![RPi GPIO Layout](https://www.raspberrypi.org/documentation/usage/gpio/images/GPIO.png)  
+
+Note: GPIO 2 & 3 available if I2C disabled, GPIO 14 & 15 available if serial is disabled  
+Script Note: I used bash scripts to control execution of the GPIO's (as this was actually easier), but I included the python scripts and methods below for an example
 
 #### Light Connections - GPIO 21
-Overview: Aquarium light plugged into IoT relay connected to GPIO pins of Pi.
-Wire Pi to IOT Relay by M-F connection of GPIO 21 to positive input and GPIO ground to negative input of relay.  
+Overview: Aquarium light is plugged into IoT relay connected to GPIO pins of Pi.  
+Connections: Wire Pi to IOT Relay by F-F connection of GPIO 21 to positive input and GPIO ground to negative input of relay (5/3.3V power wire not required) 
 Turn aquarium light on and plug aquarium receptacle in the 'normally OFF' receptacle.
 Edit Action button scrips as described [here](https://github.com/ccrisan/motioneyeos/wiki/Action-Buttons)
 
 #### Feeder Connections - GPIO 17  
-Overview: Feeder wired to one channel of relay connected to GPIO pins of Pi.
-Connect GPIO pins (Pi to Relay) 5V to Vcc, Ground to Gnd, and GPIO 17 to Channel Input.  
+Overview: Feeder wired to one channel of relay connected to GPIO pins of Pi.  
+Connections: Wire Pi to Relay by F-F connection of GPIO pins (Pi to Relay) 5V to Vcc, Ground to Gnd, and GPIO 17 to Channel Input.  
 Solder two electrical wires to one the feeders push botton as pictured below.
 Connect the other two ends of the wires to the N.O. and Com. terminals.  
 
 ![Fish Feeder Wiring](http://i1325.photobucket.com/albums/u626/jelazar67/WAMAS%20Articles/DIY%20Autofeeder/d51c2f28-e5c0-4d6f-b500-ad14b4b76b83_zps1a32b0d5.jpg)  
 
-#### To Run Python Code
+#### To Run Python Code (example only, bash script done instead)
 Create the file for button
 ```
 nano /data/etc/up_1
@@ -240,12 +250,5 @@ The "That" will be 'Webhooks', for this get the url of the buttons on the Motion
 ### Temperature Setup (To Be Continued for this)
 
 Source: [DIY Aquarium Controller](https://www.youtube.com/watch?v=76CD_waImoA&list=PLJDyE_1I8YfPQP4L8Mso2kDRItCbfq94s&index=5)
-------
-### Sources/Inspiration
-- [SourceForge GPIO Python Code Basics](https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/)
-- [GitHub for MotionEyeOS](https://github.com/ccrisan/motioneyeos)
-- [GitHub for LightOn/LightOff py file](https://github.com/skiwithpete/relaypi)
-- [Spy your pet with a Raspberry Pi Camera Server by Michel Parreno](https://hackernoon.com/spy-your-pet-with-a-raspberry-pi-camera-server-e71bb74f79ea "Medium Article")
-- [Duck DNS for Raspberry Pi](https://www.duckdns.org/install.jsp)
-- [Fish Feeder Arduino Raspberry Pi Link](https://www.instructables.com/id/Fish-Feeder-Arduino-Raspberry-Pi-Link/)
-- [Automatic Feeder for Aquacontroller](https://wamas.org/forums/blogs/entry/46-diy-automatic-feeder-for-aquacontroller/)
+
+
