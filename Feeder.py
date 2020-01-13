@@ -18,7 +18,7 @@ GPIO.setup(channel, GPIO.OUT)
 # State can be 0 / GPIO.LOW / False or 1 / GPIO.HIGH / True.
 GPIO.output(channel, GPIO.LOW)
 print("Feeding Fish")
-time.sleep(0.25)
+time.sleep(0.5)
 GPIO.output(channel, GPIO.HIGH)
 print("Fish Fed")
 
