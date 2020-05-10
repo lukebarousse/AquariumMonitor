@@ -40,7 +40,7 @@ Support Alexa control of:
 - MotionEyeOS Setup
 - Dynamic DNS Setup
 - GPIO Connections
-- Alexa Control
+- Alexa/Google Control
 ------
 ### Initial Setup
 - Set up Raspberry Pi with OS (Raspian)
@@ -239,16 +239,40 @@ Make it executable
 chmod +x /data/etc/up.py
 ```
 ------
-### Alexa Control
+### Alexa/Google Control
 
-Note: Set this up only after all the steps above are fully complete  
+#### Create and push dockerfile to the Cloud (Google Cloud in my case)  
+
+Prerequisites:
+- Docker installed on computer (go to www.docker.com)
+- Google Cloud Platform account set up & project set up
+- gcloud installed on computer
+- Google credentials updated for docker to push
+
+CLI into the Dockerfile folder build the image
+```
+docker build --tag <Repository Name>:<tag>
+```
+Tag the image (i.e. rename it) to meet GCP requirments
+```
+docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]
+```
+Push this bad boy to the cloud
+```
+docker push [HOSTNAME]/[PROJECT-ID]/[IMAGE]
+```
+Run this bad boy
+```
+gcloud run deploy SERVICE --image gcr.io/PROJECT-ID/IMAGE
+```
+Get the url (www.project-id.somenumbers.com) provided and write it down.  For the url it is an api, so if you go to it you'll have a welcome message.
+To utilize it, you just add /on (to turn on lights), /off (to turn off lights), /feed (to feed fish) (e.g., www.project-id.somenumbers.com/feed)
+
+#### Set up Webhook with Alexa/Google using IFTTT.com
+
 Log into [_If This Than That_ (IFTTT.com)](https://ifttt.com/) and register your Amazon account.  
 For each item (Lights ON, Feed Fish, etc.) assign an Alexa trigger as follows:  
-The "This" will be an 'Alexa' command (e.g., Alexa trigger aquarium lights on)  
-The "That" will be 'Webhooks', for this get the url of the buttons on the MotionEyeOS page (Meaning, go to your webpage with your cameras and copy the link location of the buttons for the respective python/GPIO task)  
-------
-### Temperature Setup (To Be Continued for this)
-
-Source: [DIY Aquarium Controller](https://www.youtube.com/watch?v=76CD_waImoA&list=PLJDyE_1I8YfPQP4L8Mso2kDRItCbfq94s&index=5)
+- The "This" will be an 'Alexa' command (e.g., Alexa trigger aquarium lights on)  
+- The "That" will be 'Webhooks'  
 
 

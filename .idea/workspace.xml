@@ -2,20 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d7ab614-9510-4f04-b84d-c5aa631180a2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/light_off_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/light_on_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/preset1_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AquariumMonitor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AquariumMonitor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backup/feedcamera.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backup/feedcamera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backup/GCP_FishApp/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Backup/GCP_FishApp/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Feeder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LIghtOff.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LightOn.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wpa_supplicant.conf" beforeDir="false" afterPath="$PROJECT_DIR$/wpa_supplicant.conf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="AquariumMonitor" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,7 +33,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -41,27 +40,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Backup" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Backup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Backup" />
+      <recent name="$PROJECT_DIR$/Dockerfile" />
+      <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -77,34 +66,23 @@
       <workItem from="1578711108636" duration="116000" />
       <workItem from="1578713816358" duration="487000" />
       <workItem from="1578715600664" duration="4571000" />
-      <workItem from="1578779161350" duration="7024000" />
+      <workItem from="1578779161350" duration="7223000" />
+      <workItem from="1579054710334" duration="36000" />
+      <workItem from="1585322832223" duration="530000" />
+      <workItem from="1585401532237" duration="3325000" />
+      <workItem from="1588520661517" duration="830000" />
+      <workItem from="1588521501763" duration="2872000" />
+      <workItem from="1589029642780" duration="11571000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2159" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577983175642">
-      <screen x="1920" y="23" width="1920" height="1057" />
+    <state x="2389" y="179" key="SettingsEditor" timestamp="1588521475101">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2159" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1057/1920.23.1920.1057@1920.23.1920.1057" timestamp="1577983175642" />
-    <state x="2564" y="361" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578882091083">
-      <screen x="1920" y="23" width="1920" height="1057" />
-    </state>
-    <state x="2564" y="361" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057/1920.23.1920.1057@1920.23.1920.1057" timestamp="1578882091083" />
-    <state x="2203" y="190" key="SettingsEditor" timestamp="1578014158472">
-      <screen x="1920" y="23" width="1920" height="1057" />
-    </state>
-    <state x="2203" y="190" key="SettingsEditor/0.23.1920.1057/1920.23.1920.1057@1920.23.1920.1057" timestamp="1578014158472" />
-    <state x="2754" y="421" key="com.intellij.ide.util.TipDialog" timestamp="1578779164984">
-      <screen x="1920" y="23" width="1920" height="1057" />
-    </state>
-    <state x="2754" y="421" key="com.intellij.ide.util.TipDialog/0.23.1920.1057/1920.23.1920.1057@1920.23.1920.1057" timestamp="1578779164984" />
-    <state x="834" y="421" key="com.intellij.ide.util.TipDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1578715603275" />
-    <state x="2404" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1578363817471">
-      <screen x="1920" y="23" width="1920" height="1057" />
-    </state>
-    <state x="2404" y="213" width="670" height="676" key="search.everywhere.popup/1920.23.1920.1057/0.23.1920.1057@1920.23.1920.1057" timestamp="1578363817471" />
+    <state x="2389" y="179" key="SettingsEditor/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588521475101" />
   </component>
 </project>
